@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Os Enviados da Pomba</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=IM+Fell+English&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="#"><img data-img="icon" alt="Ícone da Pomba">Os Enviados da Pomba</a>
+  <nav><a href="#" id="nHome">Início</a><a href="#mesa" id="nMesa">Mesa</a></nav>
+</header>
+
+<main id="home">
+  <div class="hero" id="hero">
+    <img data-img="cover" alt="Capa de Os Enviados da Pomba">
+    <p>Um continente selado, um tirano à espera e uma legião disposta a pôr fim à guerra antes que ela comece.</p>
+    <a class="btn" href="#mesa">Entrar na Mesa</a>
+    <button class="btn o" data-go="sinopse">Ler a sinopse</button>
+  </div>
+
+  <section id="sinopse"><div class="wrap syn">
+    <div>
+      <h2>Sinopse</h2>
+      <p>Você foi chamado para uma legião da Pomba, uma guilda que reúne um grupo de pessoas para salvar o continente do Tirano Odeon, um rei que quer tomar todo o território e mergulhá-lo em guerra.</p>
+      <p>Odeon foi selado no próprio continente por uma magia que unia um representante de cada reino para fechar o selo. Agora, para desfazê-lo e entrar no território do tirano, é preciso matar todos os reis.</p>
+      <p>Só então será possível derrotá-lo de uma vez por todas.</p>
+    </div>
+    <div class="shot"><img data-img="icon" alt="Emblema da Pomba"></div>
+  </div></section>
+
+  <section class="alt"><div class="wrap">
+    <h2>A Legião</h2>
+    <div class="shot"><img data-img="group" alt="O grupo de heróis da legião"></div>
+  </div></section>
+
+  <section><div class="wrap">
+    <h2>A Mesa Virtual</h2>
+    <p>Um tabuleiro online para suas sessões, feito para o mestre montar cenas do seu jeito.</p>
+    <div class="cards">
+      <div class="card"><h3>Mapas</h3><p>Carregue qualquer imagem como mapa de fundo, com grade opcional.</p></div>
+      <div class="card"><h3>Elementos</h3><p>Adicione peças soltas ao mapa, arraste, redimensione e gire.</p></div>
+      <div class="card"><h3>Recorte</h3><p>Selecione só a parte da imagem que você quer antes de usá-la.</p></div>
+      <div class="card"><h3>Importação</h3><p>Traga imagens de fora para criar seus próprios objetos e tokens.</p></div>
+      <div class="card"><h3>Salvar</h3><p>Guarde seus mapas prontos e reabra quando quiser.</p></div>
+    </div>
+    <p style="margin-top:28px"><a class="btn" href="#mesa">Abrir a Mesa</a></p>
+  </div></section>
+  <footer>Os Enviados da Pomba · RPG de mesa medieval</footer>
+</main>
+
+<main id="mesa" class="mesa" hidden>
+  <aside>
+    <h3>Mapa</h3>
+    <div class="row"><button class="btn s" id="bMap">Carregar mapa</button><button class="btn s o" id="bNoMap">Remover</button></div>
+    <label><input type="checkbox" id="gridOn"> Mostrar grade</label>
+    <label for="cols">Colunas da grade</label><input type="range" id="cols" min="8" max="60">
+
+    <h3>Elementos</h3>
+    <div class="row"><button class="btn s" id="bEl">Importar imagem</button></div>
+    <label>Imagens do RPG (clique para recortar)</label>
+    <div class="grid4" id="rpg"></div>
+    <label>Biblioteca (clique para colocar no mapa)</label>
+    <div class="grid4" id="lib"></div>
+
+    <div id="selbox" hidden>
+      <h3>Selecionado</h3>
+      <label for="sz">Tamanho</label><input type="range" id="sz" min="1" max="60" step="0.5">
+      <label for="rot">Rotação</label><input type="range" id="rot" min="-180" max="180">
+      <div class="row"><button class="btn s" id="bCrop">Recortar</button><button class="btn s o" id="bDup">Duplicar</button><button class="btn s o" id="bFront">Frente</button><button class="btn s o" id="bDel">Remover</button></div>
+    </div>
+
+    <h3>Salvar</h3>
+    <input type="text" id="mname" placeholder="Nome do mapa">
+    <div class="row"><button class="btn s" id="bSave">Salvar mapa</button><button class="btn s o" id="bNew">Novo mapa</button></div>
+    <div id="maps"></div>
+    <p style="color:var(--mut);font-size:.8rem">Os mapas ficam salvos neste navegador.</p>
+  </aside>
+  <div class="stage">
+    <div id="board">
+      <div id="empty">Carregue um mapa para começar.<br>Você também já pode adicionar elementos.</div>
+      <div id="grid"></div>
+      <div id="items"></div>
+    </div>
+  </div>
+</main>
+
+<input type="file" id="fMap" accept="image/*" hidden>
+<input type="file" id="fEl" accept="image/*" hidden>
+
+<dialog id="crop">
+  <h3 id="cropT" style="font-size:1.6rem;margin-bottom:8px">Recortar</h3>
+  <p style="margin:0 0 8px;color:var(--mut);font-size:.9rem">Arraste sobre a imagem para selecionar a área.</p>
+  <canvas id="cropCv"></canvas>
+  <div class="row" style="margin-top:10px;align-items:center">
+    <label id="circL" style="margin:0 8px 0 0"><input type="checkbox" id="circ"> Recorte circular</label>
+    <button class="btn s" id="cOk">Recortar</button><button class="btn s o" id="cAll">Usar inteira</button><button class="btn s o" id="cNo">Cancelar</button>
+  </div>
+</dialog>
+<div id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
