@@ -4,7 +4,7 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 :root[data-theme="dark"]{--bg:#0a0a0a;--fg:#f4f4f4;--mut:#aaa;--card:#161616;--line:#f4f4f4;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 "IM Fell English",Georgia,serif}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 "K2D",system-ui,-apple-system,"Segoe UI",sans-serif}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
 [hidden]{display:none!important}
 h1,h2,h3,.brand{font-family:"UnifrakturCook","Old English Text MT",Georgia,serif;font-weight:700;line-height:1.1;margin:0}
@@ -55,3 +55,26 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 18px;z-index:50;opacity:0;pointer-events:none;transition:.25s}
 #toast.on{opacity:1}
 @media(max-width:800px){.syn{grid-template-columns:1fr}.mesa{grid-template-columns:1fr}aside{border-right:0;border-bottom:2px solid var(--line)}h2{font-size:2.1rem}}
+
+.pre{max-height:230px;overflow:auto;padding-right:2px}.pre .thumb{background:#8a8a8a}.pre .thumb img{padding:4px}
+.hd{display:none;position:absolute;right:-9px;bottom:-9px;width:16px;height:16px;background:#fff;border:2px solid #000;cursor:nwse-resize;touch-action:none}.item.sel .hd{display:block}
+
+.stage{flex-direction:column;align-items:center;gap:10px}
+#pen,#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#board.brush{cursor:crosshair}#board.brush #items{pointer-events:none}
+.h{display:none;position:absolute;width:16px;height:16px;background:#fff;border:2px solid #000;touch-action:none;z-index:2}.item.sel .h{display:block}
+.hd{right:-9px;bottom:-9px;cursor:nwse-resize}.he{right:-9px;top:calc(50% - 8px);cursor:ew-resize}.hs{bottom:-9px;left:calc(50% - 8px);cursor:ns-resize}.hr{top:-30px;left:calc(50% - 8px);border-radius:50%;cursor:grab}
+#tb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;background:var(--bg);color:var(--fg);border:2px solid var(--line);padding:6px 8px;font-size:.85rem;max-width:100%}
+#tb button,#tb select{font:inherit;background:var(--bg);color:var(--fg);border:2px solid var(--line);padding:3px 8px;cursor:pointer}
+#tb button.on{background:var(--fg);color:var(--bg)}#tools{display:flex;gap:4px;flex-wrap:wrap}
+#mesa.pres .stage{position:fixed;inset:0;z-index:40;background:#000;padding:0;justify-content:center;align-items:center;overflow:hidden}
+#mesa.pres #board{border:0}
+#mesa.pres #tb{--bg:#0a0a0a;--fg:#fff;--line:#fff;position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:41;opacity:.9}
+.lrow{display:flex;gap:3px;align-items:center;border:2px solid var(--line);padding:2px 4px;margin:3px 0;font-size:.85rem}
+.lrow.on{background:var(--card);outline:2px solid var(--fg)}.lrow input[type=text]{flex:1;min-width:0;padding:2px 4px}
+.lrow button{font:inherit;background:none;color:var(--fg);border:0;cursor:pointer;padding:0 3px}
+.lrow img{width:22px;height:22px;object-fit:contain;background:#8a8a8a}#layers{max-height:240px;overflow:auto}
+.thumb .x{font-size:.7rem;padding:2px 4px}
+
+input,select,button,textarea,dialog{font-family:inherit}
+h1,h2,h3,.brand{font-family:"UnifrakturCook","Old English Text MT",Georgia,serif}
