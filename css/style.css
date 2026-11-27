@@ -78,3 +78,10 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 
 input,select,button,textarea,dialog{font-family:inherit}
 h1,h2,h3,.brand{font-family:"UnifrakturCook","Old English Text MT",Georgia,serif}
+
+.pl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ml{position:absolute;inset:0;background:center/100% 100% no-repeat;pointer-events:none}
+.th img,.th canvas{width:22px;height:22px;object-fit:contain;background:#8a8a8a;display:block}
+.lrow .gp{cursor:grab;user-select:none;padding:0 2px}.lrow.dr{outline:2px dashed var(--fg)}#layers{max-height:300px}
+
+.thumb.ps{outline:3px solid var(--fg);outline-offset:-3px}.thumb.ps::after{content:"✓";position:absolute;left:2px;top:2px;background:#fff;color:#000;font-size:.75rem;line-height:1;padding:1px 4px}
